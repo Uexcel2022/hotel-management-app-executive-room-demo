@@ -44,7 +44,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ReservedRoomException.class)
     public ResponseEntity<ReservedErrorResponseDto>
     handleReservedRoomException(ReservedRoomException ex, WebRequest request) {
-        return ResponseEntity.status(400).body(new ReservedErrorResponseDto(getTime(),400,
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST.value())
+                .body(new ReservedErrorResponseDto(getTime(),HttpStatus.BAD_REQUEST.value(),
                 "Bad Request", ex.getMessage(),ex.getDateRooms(),request.getDescription(false))
         );
     }

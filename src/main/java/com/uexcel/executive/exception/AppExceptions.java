@@ -8,8 +8,8 @@ import java.io.Serial;
 public class AppExceptions extends RuntimeException {
     @Serial
     private static final long serialVersionUID = 1L;
-    private int status;
-    private  String description;
+    private final int status;
+    private final   String description;
     public AppExceptions(int status, String description, String message) {
         super(message);
         this.status = status;

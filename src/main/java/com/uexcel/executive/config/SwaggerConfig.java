@@ -4,16 +4,15 @@ import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.*;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@AllArgsConstructor
-public class SwaggerConfig {
+//@Configuration
+//@AllArgsConstructor
+//public class SwaggerConfig {
     @Configuration
-    public class OpenAPISecurityConfig {
+    public class SwaggerConfig {
 
         @Value("${keycloak.auth-server-url}")
         String authServerUrl;
@@ -53,4 +52,4 @@ public class SwaggerConfig {
         }
     }
 
-}
+//}
