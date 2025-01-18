@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
-//@AllArgsConstructor
-//public class SwaggerConfig {
     @Configuration
     public class SwaggerConfig {
 
@@ -51,5 +48,3 @@ import org.springframework.context.annotation.Configuration;
 //                            .addString("write_access", "modify data"));
         }
     }
-
-//}
