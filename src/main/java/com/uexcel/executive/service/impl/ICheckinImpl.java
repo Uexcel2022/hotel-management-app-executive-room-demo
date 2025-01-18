@@ -41,7 +41,6 @@ public class ICheckinImpl implements ICheckinService {
             or the customer actually have reservations for the number days intended.
          */
         List<LocalDate> intendedCheckinDates = new ArrayList<>();
-        List<Checkin> checkins = new ArrayList<>();
         int checkinNumberOfDays = checkinRequestDto.getNumberOfDays();
         for (int i = 0; i < checkinNumberOfDays; i++) {
             intendedCheckinDates.add(LocalDate.now().plusDays(i));
