@@ -1,5 +1,6 @@
 package com.uexcel.executive.exception;
 
+import com.uexcel.executive.constants.Constants;
 import com.uexcel.executive.dto.ErrorResponseDto;
 import com.uexcel.executive.dto.ReservedErrorResponseDto;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +54,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         log.error(ex.getMessage(), ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value()).body(new ErrorResponseDto(getTime(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Internal Server Error", ex.getMessage(),request.getDescription(false))
+                Constants.InternalServerError, ex.getMessage(),request.getDescription(false))
         );
     }
 }
