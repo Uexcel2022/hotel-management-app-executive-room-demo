@@ -192,7 +192,6 @@ public class IReservationServiceImpl implements IReservationService {
             rDto.getInfo().addAll(unAvailableDates);
             return rDto;
         }
-
         /*
             checking for existing reservation if found add the current reservation to it.
             (to maintain phone number unique constraint in the reservation table) else create new reservation.
