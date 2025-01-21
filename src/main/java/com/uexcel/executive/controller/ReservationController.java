@@ -14,17 +14,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Tag(name = "REST APIs For Regular Rooms  Reservation.",
+@Tag(name = "REST APIs For Executive Rooms  Reservation.",
         description = "The REST APIs For Regular Rooms  Reservation CRUD operations.")
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(value = "/api/regular", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/executive", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ReservationController {
     private final IReservationService reservationService;
 
-    @Operation(summary = "The API to Search For Regular Room Free Dates in Days. ",
-            description = "The API to Search For Regular Room Free Days Can Be Filtered by Desired number of days.",
+    @Operation(summary = "The API to Search For Executive Room Free Dates in Days. ",
+            description = "The API to Search For Executive Room Free Days Can Be Filtered by Desired number of days.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",description = "Ok",
@@ -53,8 +53,8 @@ public class ReservationController {
                 reservationService.getFreeRoomsByDays(numberOfDays);
         return ResponseEntity.ok(freeRoomsDtoList);
     }
-    @Operation(summary = "The API to Search For Regular Room Free Dates in Month.",
-            description = "The API to Search For Regular Room Free Days Can Be Filtered by Desired Month.",
+    @Operation(summary = "The API to Search For Executive Room Free Dates in Month.",
+            description = "The API to Search For Executive Room Free Days Can Be Filtered by Desired Month.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",description = "Ok",
@@ -81,8 +81,8 @@ public class ReservationController {
         List<FreeRoomsDto> freeRoomsDtoList = reservationService.getFreeRoomsByMonth(monthName);
         return ResponseEntity.ok(freeRoomsDtoList);
     }
-    @Operation(summary = "The API to Create Regular Room Reservation.",
-            description = "The API to Create Regular Room Reservation.",
+    @Operation(summary = "The API to Create Executive Room Reservation.",
+            description = "The API to Create Executive Room Reservation.",
             responses = {
                     @ApiResponse(
                             responseCode = "201",description = "Created",
@@ -110,8 +110,8 @@ public class ReservationController {
       return ResponseEntity.status(rRDto.getStatus()).body(rRDto);
     }
 
-    @Operation(summary = "The API to Delete Regular Room Reservation.",
-            description = "The API to Delete All Past Dates Regular Room Reservations.",
+    @Operation(summary = "The API to Delete Executive Room Reservation.",
+            description = "The API to Delete All Past Dates Executive Room Reservations.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",description = "Ok",

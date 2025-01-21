@@ -170,8 +170,8 @@ public class IReservationServiceImpl implements IReservationService {
         }
         List<FreeRoomsDto> unAvailableDates = new ArrayList<>();
         DateRoomsDto booking;
-        for(int i = 0; i < reservationDto.getDates().size();i++){
-            booking = reservationDto.getDates().get(i);
+        for(int i = 0; i < reservationDto.getDateRoom().size(); i++){
+            booking = reservationDto.getDateRoom().get(i);
            List<ReservationDates> reservedDates =
                    reservationDateRepository.findByDate(booking.getDate());
            if(reservedDates == null){
@@ -208,7 +208,6 @@ public class IReservationServiceImpl implements IReservationService {
             if (savedReservation.getId() == null) {
                 throw new AppExceptions(HttpStatus.EXPECTATION_FAILED.value(),
                         Constants.Failed, "Fail to save reservation.");
-
             }
         }
 
@@ -217,6 +216,7 @@ public class IReservationServiceImpl implements IReservationService {
         if(!dateRoomsDtos.isEmpty()){
             throw new ReservedRoomException(dateRoomsDtos);
         }
+
       List<ReservationDates> savedResDates =  reservationDateRepository.saveAll(reservationDates);
         for(ReservationDates rs : savedResDates){
             if(rs.getId() ==null){
@@ -264,7 +264,7 @@ public class IReservationServiceImpl implements IReservationService {
         /*
              Streaming and creating obj of the intended reserved dates from the customer
          */
-        reservationDto.getDates().forEach(res -> {
+        reservationDto.getDateRoom().forEach(res -> {
             for(int i = 0; i < res.getRooms().size(); i++) {
 
                 ReservationDates reservationDate = new ReservationDates();
@@ -285,7 +285,7 @@ public class IReservationServiceImpl implements IReservationService {
                         LocalDate duration = LocalDate.parse(checkinDate).plusDays(numberOfDays);
                         if (!res.getDate().isAfter(duration)) {
                             throw new AppExceptions(HttpStatus.BAD_REQUEST.value(), Constants.BadRequest,
-                                    String.format("Room %s is not available within the period request.", room.getRoomNumber()));
+                                    String.format("Room %s is not available within the period requested.", room.getRoomNumber()));
                         }
                     }
                 /*
@@ -297,7 +297,19 @@ public class IReservationServiceImpl implements IReservationService {
                     reservationDate.setDate(res.getDate());
                     reservationDate.setReservation(savedReservation);
                     reservationDate.setExecutiveRoom(room);
-                    reservationDates.add(reservationDate);
+                    /*
+                     checking for duplicate reservation
+                     */
+                   if(!reservationDates.isEmpty()) {
+                       reservationDates.forEach(rsvDates -> {
+                               if (reservationDate.equals(rsvDates)) {
+                                   throw new AppExceptions(
+                                           HttpStatus.BAD_REQUEST.value(), Constants.BadRequest,
+                                           "Duplicate reservation for this room: " + room.getRoomNumber());
+                               }
+                       });
+                   }
+                   reservationDates.add(reservationDate);
             }
         });
 

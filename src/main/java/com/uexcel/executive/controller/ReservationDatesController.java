@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-@Tag(name = "REST APIs For Regular Rooms  Reservation Dates.",
-        description = "The REST APIs For Regular Rooms  Reservation Dates CRUD operations.")
+@Tag(name = "REST APIs For Executive Rooms  Reservation Dates.",
+        description = "The REST APIs For Executive Rooms  Reservation Dates CRUD operations.")
 @RestController
 @RequestMapping(value = "/api/reservation/date",produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
@@ -29,8 +29,8 @@ public class ReservationDatesController {
     private final IReservationDatesService reservationDatesService;
     private  final ReservationDateRepository reservationDateRepository;
 
-    @Operation(summary = "The API Delete Regular Room Reservation Dates ",
-            description = "The API to Delete Regular Room Reservation date",
+    @Operation(summary = "The API Delete Executive Room Reservation Dates ",
+            description = "The API to Delete Executive Room Reservation date",
             responses = {
                     @ApiResponse(
                             responseCode = "200",description = "Ok",
@@ -55,8 +55,8 @@ public class ReservationDatesController {
                 Constants.OK,"Reservation deleted successfully."),HttpStatus.OK);
     }
 
-    @Operation(summary = "The API to Fetch Regular Room Reservation Dates. ",
-            description = "The API to Fetch Customer's Regular Room Reservation  by Phone Number'.",
+    @Operation(summary = "The API to Fetch Executive Room Reservation Dates. ",
+            description = "The API to Fetch Customer's Executive Room Reservation  by Phone Number'.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",description = "Ok",

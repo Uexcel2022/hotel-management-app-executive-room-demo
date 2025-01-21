@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-@Tag(name = "REST APIs to Fetch Regular Rooms  Information.",
-        description = "REST APIs to Fetch Regular Rooms Consolidated  Information.")
+@Tag(name = "REST APIs to Fetch Executive Rooms  Information.",
+        description = "REST APIs to Fetch Executive Rooms Consolidated  Information.")
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/regular")
-public class RegularRoomController {
-    private final IExecutiveRoomService regularRoomService;
+@RequestMapping("/api/executive")
+public class ExecutiveRoomController {
+    private final IExecutiveRoomService executiveRoomService;
 
-    @Operation(summary = "REST APIs to Fetch Regular Rooms  Information.",
-            description = "REST APIs to Fetch Regular Rooms  Information.",
+    @Operation(summary = "REST APIs to Fetch Executive Rooms  Information.",
+            description = "REST APIs to Fetch Executive Rooms  Information.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",description = "Ok",
@@ -50,7 +50,7 @@ public class RegularRoomController {
     public ResponseEntity<ReservedRoomInFoDto> getRegularRoomById(
             @RequestParam String roomNumber) {
         ReservedRoomInFoDto regularRoom =
-                regularRoomService.getRegularRoomByRoomNumber(roomNumber);
+                executiveRoomService.getRegularRoomByRoomNumber(roomNumber);
         if (regularRoom.getId()==null) {
             throw new AppExceptions(HttpStatus.NOT_FOUND.value(),
                     "Not Found","No reservation found for room number: " + roomNumber

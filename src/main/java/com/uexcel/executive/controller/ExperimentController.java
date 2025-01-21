@@ -14,16 +14,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
-@Tag(name = "REST APIs For Regular Rooms  Reservation.",
-        description = "The REST APIs For Regular Rooms  Reservation CRUD operations.")
+@Tag(name = "REST APIs For Executive Rooms  Reservation.",
+        description = "The REST APIs For Executive Rooms  Reservation CRUD operations.")
 @RestController
 @RequestMapping("/api/free")
 @AllArgsConstructor
 public class ExperimentController {
     private final IExecutiveRoomService regularRoomService;
 
-    @Operation(summary = "The API to Search For Regular Room Free Dates in Days.",
-            description = "The API to Search For Regular Room Free Days Can Be Filtered by Desired number of days.",
+    @Operation(summary = "The API to Search For Executive Room Free Dates in Days.",
+            description = "The API to Search For Executive Room Free Days Can Be Filtered by Desired number of days.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",description = "Ok",
@@ -52,8 +52,8 @@ public class ExperimentController {
         return new ResponseEntity<>(sortedResult, HttpStatus.OK);
     }
 
-    @Operation(summary = "The API to Search For Regular Room Free Dates in Month.",
-            description = "The API to Search For Regular Room Free Days Can Be Filtered by Desired Month.",
+    @Operation(summary = "The API to Search For Executive Room Free Dates in Month.",
+            description = "The API to Search For Executive Room Free Days Can Be Filtered by Desired Month.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",description = "Ok",
